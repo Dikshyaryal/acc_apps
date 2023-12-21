@@ -1,0 +1,14 @@
+class YourWidget extends StatefulWidget {
+  // Your widget code...
+}
+
+class YourWidgetState extends State<YourWidget> {
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speak(String text) async {
+    await flutterTts.setLanguage('en-US');
+    await flutterTts.speak(text);
+  }
+
+  // Rest of your widget code...
+}

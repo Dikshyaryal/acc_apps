@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyAnimatedContainerDemo(),
+    );
+  }
+}
+
+class MyAnimatedContainerDemo extends StatefulWidget {
+  @override
+  _MyAnimatedContainerDemoState createState() => _MyAnimatedContainerDemoState();
+}
+
+class _MyAnimatedContainerDemoState extends State<MyAnimatedContainerDemo> {
+  double _containerWidth = 100.0;
+  double _containerHeight = 100.0;
+  Color _containerColor = Colors.blue;
+
+  void _changeContainer() {
+    setState(() {
+      // Modify the properties you want to animate
+      _containerWidth = 200.0;
+      _containerHeight = 200.0;
+      _containerColor = Colors.red;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('AnimatedContainer Demo'),
+      ),
+      body: Center(
+        child: AnimatedContainer(
+          duration: Duration(seconds: 1), // Animation duration
+          width: _containerWidth,
+          height: _containerHeight,
+          color: _containerColor,
+          child: Center(
+            child: Text(
+              'Tap to Animate!',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _changeContainer,
+        child: Icon(Icons.play_arrow),
+      ),
+    );
+  }
+}
